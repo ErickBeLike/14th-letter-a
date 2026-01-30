@@ -3,18 +3,17 @@
    ========================================= */
 .museum-wall {
   /* Fondo: Un crema muy suave (Marfil), menos frío que el blanco */
-  background-color: #fdfbf7; 
+  background-color: #fdfbf7;
   position: relative;
   min-height: 100vh;
-  
+
   /* Líneas verticales muy sutiles en tono cálido */
-  background-image: 
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 39px,
-      rgba(168, 162, 158, 0.05) 40px
-    );
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 39px,
+    rgba(168, 162, 158, 0.05) 40px
+  );
 }
 
 .museum-wall-overlay {
@@ -27,8 +26,12 @@
 }
 
 @keyframes fadeOutTexture {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Grano sutil */
@@ -48,7 +51,11 @@
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 30%, rgba(80, 20, 30, 0.08) 100%);
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(80, 20, 30, 0.08) 100%
+  );
   pointer-events: none;
   z-index: 0;
   opacity: 0;
@@ -64,7 +71,7 @@
   pointer-events: none;
   opacity: 0.7; /* Un poco más visibles */
   /* Sombra sutil para despegarlas del fondo */
-  filter: drop-shadow(1px 1px 1px rgba(159, 18, 57, 0.15)); 
+  filter: drop-shadow(1px 1px 1px rgba(159, 18, 57, 0.15));
 }
 
 /* --- LATERALES --- */
@@ -73,15 +80,20 @@
   bottom: 0;
   width: 60px;
   z-index: 5;
-  
+
   /* CAMBIO: Color #9f1239 (Rose-800/Vino) en lugar de rosa claro */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 240'%3E%3Cpath fill='%239f1239' d='M30,0 C35,20 45,40 40,60 C35,80 25,100 30,120 C35,140 45,160 40,180 C35,200 25,220 30,240 L28,240 C23,220 33,200 38,180 C43,160 33,140 28,120 C23,100 33,80 38,60 C43,40 33,20 28,0 Z'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(20, 80) rotate(-20)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(100, 220) rotate(20)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(20, 380) rotate(-15)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(100, 500) rotate(25)'/%3E%3C/svg%3E");
   background-repeat: repeat-y;
   background-size: 100% auto;
 }
 
-.vine-left { left: 0; }
-.vine-right { right: 0; transform: scaleX(-1); }
+.vine-left {
+  left: 0;
+}
+.vine-right {
+  right: 0;
+  transform: scaleX(-1);
+}
 
 /* --- SUPERIOR E INFERIOR --- */
 .vine-border-x {
@@ -96,15 +108,113 @@
   background-size: auto 100%;
 }
 
-.vine-top { top: 0; }
-.vine-bottom { bottom: 0; transform: scaleY(-1); }
+.vine-top {
+  top: 0;
+}
+.vine-bottom {
+  bottom: 0;
+  transform: scaleY(-1);
+}
 
 /* ... resto de animaciones fade-in igual ... */
-@keyframes simpleFadeIn { to { opacity: 1; } }
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes simpleFadeIn {
+  to {
+    opacity: 1;
+  }
 }
-.animate-fade-in-up { opacity: 0; animation: fadeInUp 1.2s ease-out forwards; }
-.delay-100 { animation-delay: 0.1s; }
-.delay-500 { animation-delay: 0.5s; }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Animación de entrada del fondo oscuro */
+.animate-fade-in {
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación de entrada de la tarjeta (Sube un poquito) */
+.animate-slide-up {
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scrollbar bonito para el texto largo */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e11d4830; /* Rose muy suave */
+  border-radius: 10px;
+}
+
+/* =========================================
+   ANIMACIONES DE SALIDA (CERRAR MODAL)
+   ========================================= */
+
+/* Fondo: Se desvanece suavemente */
+.animate-fade-out {
+  animation: modalFadeOut 0.3s ease-in forwards;
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Tarjeta: Baja un poquito y se desvanece (Efecto gravedad) */
+.animate-slide-down {
+  animation: modalSlideDown 0.3s ease-in forwards;
+}
+
+@keyframes modalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, signal } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, signal, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Memory } from '../../models/memory.model';
 
@@ -11,9 +11,14 @@ import { Memory } from '../../models/memory.model';
 })
 export class MemoryFrameComponent implements OnInit, OnDestroy {
   @Input({ required: true }) data!: Memory;
+  @Output() showDetails = new EventEmitter<void>();
 
   currentIndex = signal(0);
   private intervalId: any;
+
+  onPlaqueClick() {
+    this.showDetails.emit();
+  }
 
   ngOnInit() {
     // Solo iniciamos el carrusel si hay más de una foto

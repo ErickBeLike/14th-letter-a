@@ -2,3 +2,19 @@
   display: block;
   width: 100%;
 }
+
+/* Animación de latido muy lento y sutil */
+.group\/plaque {
+  animation: subtleHeartbeat 4s infinite ease-in-out;
+}
+
+/* Solo se detiene el latido cuando le pones el mouse encima (hover) */
+.group\/plaque:hover {
+  animation: none;
+}
+
+@keyframes subtleHeartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); } /* Crece un poquitito */
+  100% { transform: scale(1); }
+}

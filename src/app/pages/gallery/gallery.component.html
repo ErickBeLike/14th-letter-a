@@ -23,13 +23,53 @@
     </header>
 
     <main class="relative z-10 max-w-md mx-auto px-6 flex flex-col gap-24 mt-12 pt-16 animate-fade-in-up delay-500">
-
         @for (memory of memories; track memory.id) {
-        <app-memory-frame [data]="memory"></app-memory-frame>
+        <app-memory-frame [data]="memory" (showDetails)="openModal(memory)"></app-memory-frame>
         }
-
     </main>
 
     <div class="h-20"></div>
+
+    @if (activeMemory()) {
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
+        [class.animate-fade-out]="isClosing()">
+
+        <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity" (click)="closeModal()"></div>
+
+        <div class="relative w-full max-w-lg bg-[#fff9fa] rounded-sm shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-slide-up"
+            [class.animate-slide-down]="isClosing()">
+
+            <div class="h-2 w-full bg-gradient-to-r from-rose-300 via-rose-500 to-rose-300"></div>
+
+            <button (click)="closeModal()"
+                class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-rose-50 text-rose-800 hover:bg-rose-100 transition-colors shadow-sm">
+                <span class="text-xl font-bold leading-none">&times;</span>
+            </button>
+
+            <div class="overflow-y-auto p-8 custom-scrollbar">
+
+                <div class="text-center mb-4 text-3xl">💌</div>
+
+                <h2 class="font-['Dancing_Script'] text-3xl text-rose-900 text-center font-bold mb-2">
+                    {{ activeMemory()?.title }}
+                </h2>
+
+                <p
+                    class="text-center text-xs font-serif uppercase tracking-widest text-stone-500 mb-6 border-b border-rose-100 pb-4">
+                    {{ activeMemory()?.date }}
+                </p>
+
+                <div class="font-serif text-stone-700 text-lg leading-relaxed whitespace-pre-line text-justify">
+                    {{ activeMemory()?.description }}
+                </div>
+
+                <div class="mt-8 text-center text-rose-300 text-xl">
+                    &hearts;
+                </div>
+            </div>
+
+        </div>
+    </div>
+    }
 
 </div>

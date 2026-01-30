@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MemoryFrameComponent } from '../../components/memory-frame/memory-frame.component';
 import { Memory } from '../../models/memory.model';
@@ -10,6 +10,8 @@ import { Memory } from '../../models/memory.model';
   styleUrl: './gallery.component.css',
 })
 export class GalleryComponent {
+  activeMemory = signal<Memory | null>(null);
+  isClosing = signal(false);
   memories: Memory[] = [
     {
       id: 1,
@@ -66,4 +68,19 @@ export class GalleryComponent {
       description: 'Esa foto especial...',
     },
   ];
+
+  // Abrir el modal
+  openModal(memory: Memory) {
+    this.activeMemory.set(memory);
+  }
+
+  // Cerrar el modal
+  closeModal() {
+    this.isClosing.set(true); // 1. Empieza la animación
+
+    setTimeout(() => {
+      this.activeMemory.set(null); // 2. Cierra de verdad después de 300ms
+      this.isClosing.set(false); // 3. Resetea el estado
+    }, 300);
+  }
 }

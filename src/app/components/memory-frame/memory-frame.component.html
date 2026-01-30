@@ -34,9 +34,11 @@
         </div>
     </div>
 
-    <div class="relative mt-6 min-w-[200px] transform hover:scale-105 transition-transform duration-300 group/plaque">
+    <div class="relative mt-6 min-w-[220px] transform hover:scale-105 transition-transform duration-300 group/plaque cursor-pointer"
+        (click)="onPlaqueClick()">
 
-        <div class="bg-white border border-rose-100 px-8 py-3 shadow-md rounded-[1px] text-center relative">
+        <div
+            class="bg-white border border-rose-100 px-8 py-4 shadow-md rounded-[1px] text-center relative transition-colors duration-300 group-hover/plaque:border-rose-300 group-hover/plaque:bg-rose-50/30">
 
             <div class="absolute top-1 left-1 w-2 h-2 border-l border-t border-yellow-500"></div>
             <div class="absolute top-1 right-1 w-2 h-2 border-r border-t border-yellow-500"></div>
@@ -47,9 +49,17 @@
                 {{ data.title }}
             </h3>
 
-            <p class="font-['Dancing_Script'] text-rose-900 text-xl leading-none font-bold">
+            <p class="font-['Dancing_Script'] text-rose-900 text-xl leading-none font-bold mb-2">
                 {{ data.date }}
             </p>
+
+            <div class="flex flex-col items-center justify-center gap-1 mt-2 pt-2 border-t border-rose-100/50">
+                <span
+                    class="text-[9px] font-serif tracking-widest text-rose-400 group-hover/plaque:text-rose-600 transition-colors flex items-center gap-1">
+                    LEER MÁS ...
+                </span>
+            </div>
+
         </div>
     </div>
 
