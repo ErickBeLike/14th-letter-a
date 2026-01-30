@@ -1,4 +1,4 @@
-<div class="w-full h-full bg-black relative overflow-hidden glitch-entry">
+<div class="w-full h-full bg-black relative overflow-hidden glitch-entry" [class.terminal-exit-glitch]="isExiting()">
 
     <div class="scanlines"></div>
     <div class="screen-flicker"></div>
@@ -10,7 +10,7 @@
             <p class="text-xs text-green-700">CONNECTION: ESTABLISHED_TO_HOST: ANNITA_HEART</p>
         </div>
 
-        <div class="flex flex-col font-mono text-sm md:text-base">
+        <div class="flex flex-col font-mono text-sm md:text-base pb-8">
 
             @for (msg of messages(); track msg.id) {
 
@@ -28,34 +28,58 @@
                 </div>
             </div>
             }
+
+            @if (msg.sender === 'user') {
+            <div class="log-line msg-appear mt-4 mb-2">
+                <div class="flex flex-wrap">
+                    <span class="prompt">SYSTEM_MENU: </span>
+                    <span class="user-text">{{ msg.text }}</span>
+                </div>
+            </div>
+            }
+
             @if (msg.imageUrl) {
             <div class="terminal-image-container msg-appear my-4 ml-2 relative inline-block">
                 <img [src]="msg.imageUrl" alt="Scanned file" class="terminal-image">
-
                 <div class="image-scan-overlay pointer-events-none"></div>
-
                 <div class="text-[10px] text-green-800 mt-1 font-mono">
                     IMG_DATA: 300x200 // SIZE: 45KB // ENCODING: GREEN_PHOSPHOR
                 </div>
             </div>
             }
 
-
-            }
-
-            @if (isTyping()) {
+            } @if (isTyping()) {
             <div class="mt-4">
                 <span class="prompt">user:&#64;ElTitoErick: </span>
                 <span class="cursor-blink"></span>
             </div>
             } @else {
-            <div class="mt-2 opacity-50">
+            <div class="mt-2 opacity-50 mb-4">
                 <span class="prompt">_</span>
             </div>
             }
 
+
+            @if (showActions()) {
+            <div class="controls-container">
+                <button (click)="goBack()" class="terminal-btn group">
+                    <span class="text-lg">&lt;</span>
+                    <span>/BACK_TO_GALLERY</span>
+                </button>
+
+                <button (click)="reload()" class="terminal-btn group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="animate-spin-slow group-hover:animate-spin">
+                        <path d="M23 4v6h-6"></path>
+                        <path d="M1 20v-6h6"></path>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span>./REBOOT_SYSTEM.sh</span>
+                </button>
+            </div>
+            }
+
         </div>
-
     </div>
-
 </div>

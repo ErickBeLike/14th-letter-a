@@ -51,7 +51,7 @@
   width: 100%;
   height: 100%;
   padding: 2rem;
-  font-family: 'Courier New', Courier, monospace; /* Fuente Hacker */
+  font-family: "Courier New", Courier, monospace; /* Fuente Hacker */
   color: #33ff00; /* Verde Fósforo Clásico */
   text-shadow: 0 0 5px rgba(51, 255, 0, 0.4); /* Glow del texto */
   position: relative;
@@ -80,10 +80,10 @@
   height: 100vh;
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0) 50%,
-    rgba(0,0,0,0.2) 50%,
-    rgba(0,0,0,0.2)
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.2)
   );
   background-size: 100% 4px;
   pointer-events: none;
@@ -106,9 +106,15 @@
 }
 
 @keyframes flicker {
-  0% { opacity: 0.02; }
-  50% { opacity: 0.05; }
-  100% { opacity: 0.02; }
+  0% {
+    opacity: 0.02;
+  }
+  50% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.02;
+  }
 }
 
 /* =========================================
@@ -126,7 +132,9 @@
 }
 
 @keyframes typeAppear {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .system-text {
@@ -155,8 +163,13 @@
 }
 
 @keyframes cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* =========================================
@@ -173,16 +186,17 @@
   width: 100%;
   height: auto;
   display: block;
-  
+
   /* LA MAGIA DE LOS FILTROS HACKER: */
   /* 1. grayscale(100%): La vuelve blanco y negro */
   /* 2. sepia(100%): La vuelve sepia */
   /* 3. hue-rotate(90deg): Rota el tono sepia hacia el verde matriz */
   /* 4. contrast(1.5) y saturate(300%): Aumenta el contraste para que se vea "quemada" */
-  filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%) contrast(1.5) brightness(0.9);
-  
+  filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%)
+    contrast(1.5) brightness(0.9);
+
   /* Hace que se vea pixelada si es pequeña */
-  image-rendering: pixelated; 
+  image-rendering: pixelated;
   opacity: 0.9;
 }
 
@@ -198,4 +212,84 @@
     transparent 3px
   );
   z-index: 2;
+}
+
+/* =========================================
+   CONTROLES FINALES (BOTONES RETRO)
+   ========================================= */
+.controls-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #005f0b; /* Línea de separación sutil */
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.terminal-btn {
+  background: transparent;
+  border: 1px solid #33ff00;
+  color: #33ff00;
+  font-family: "Courier New", Courier, monospace;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(51, 255, 0, 0.2);
+}
+
+.terminal-btn:hover {
+  background: #33ff00;
+  color: #000; /* Inversión de color al hover */
+  box-shadow: 0 0 15px rgba(51, 255, 0, 0.6);
+}
+
+.terminal-btn:active {
+  transform: translateY(2px);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   GLITCH DE SALIDA (TV SHUTOFF EFFECT)
+   ========================================= */
+.terminal-exit-glitch {
+  animation: tv-shutoff 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  pointer-events: none; /* Bloquea clicks durante la salida */
+}
+
+@keyframes tv-shutoff {
+  0% {
+    transform: scale(1, 1);
+    filter: none;
+    opacity: 1;
+  }
+  40% {
+    /* Se comprime verticalmente muy rápido */
+    transform: scale(1, 0.002);
+    filter: brightness(3); /* Brillo intenso */
+    opacity: 1;
+  }
+  70% {
+    /* Se expande un poco la línea horizontal */
+    transform: scale(1.3, 0.002);
+    filter: brightness(5);
+    background-color: #fff;
+  }
+  100% {
+    /* Desaparece al centro */
+    transform: scale(0, 0);
+    opacity: 0;
+  }
 }

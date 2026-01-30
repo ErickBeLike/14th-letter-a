@@ -88,7 +88,6 @@ export class GalleryComponent {
   }
 
   navigateToBot() {
-    console.log('💥 INICIANDO GLITCH...');
     // 1. Activamos el modo caos
     this.isGlitchingOut.set(true); 
     
