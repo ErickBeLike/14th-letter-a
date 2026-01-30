@@ -1,0 +1,201 @@
+:host {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505; /* Casi negro absoluto */
+  overflow: hidden;
+}
+
+/* =========================================
+   1. ANIMACIÓN DE ENTRADA (EL GLITCH)
+   ========================================= */
+.glitch-entry {
+  animation: glitch-snap 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch-snap {
+  0% {
+    transform: scale(1.2) translateX(-20px);
+    filter: invert(1) hue-rotate(90deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(0.9) translateX(20px);
+    filter: invert(0) blur(2px);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.05) translateY(-10px);
+    filter: hue-rotate(-45deg);
+    clip-path: inset(20% 0 50% 0);
+  }
+  60% {
+    transform: scale(0.98);
+    clip-path: inset(0 0 0 0);
+    filter: none;
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   2. ESTÉTICA TERMINAL / MATRIX
+   ========================================= */
+.terminal-container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  font-family: 'Courier New', Courier, monospace; /* Fuente Hacker */
+  color: #33ff00; /* Verde Fósforo Clásico */
+  text-shadow: 0 0 5px rgba(51, 255, 0, 0.4); /* Glow del texto */
+  position: relative;
+  z-index: 10;
+}
+
+/* Scrollbar invisible o muy discreto */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #33ff00;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+/* =========================================
+   3. EFECTOS CRT (MONITOR VIEJO)
+   ========================================= */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(0,0,0,0.2)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.6;
+}
+
+/* Efecto de parpadeo de pantalla vieja */
+.screen-flicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 255, 0, 0.02);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 40;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.02; }
+  50% { opacity: 0.05; }
+  100% { opacity: 0.02; }
+}
+
+/* =========================================
+   ESTILOS DE MENSAJES
+   ========================================= */
+.log-line {
+  margin-bottom: 0.5rem;
+  display: block;
+  opacity: 0; /* Empieza oculto para la animación */
+}
+
+/* Aparecer de golpe (tipo máquina de escribir rápida) */
+.msg-appear {
+  animation: typeAppear 0.1s forwards;
+}
+
+@keyframes typeAppear {
+  to { opacity: 1; }
+}
+
+.system-text {
+  color: #008f11; /* Verde más oscuro para logs */
+  font-size: 0.85rem;
+}
+
+.bot-text {
+  color: #c0c0c0; /* Blanco/Grisáceo para texto humano */
+  font-weight: bold;
+}
+
+.prompt {
+  color: #33ff00;
+  margin-right: 8px;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: #33ff00;
+  animation: cursor 1s infinite;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+@keyframes cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* =========================================
+   IMÁGENES EN TERMINAL (Estilo Monitor Verde)
+   ========================================= */
+.terminal-image-container {
+  max-width: 80%; /* Que no ocupe todo el ancho */
+  border: 2px solid #33ff00; /* Borde verde neón */
+  padding: 4px;
+  background-color: #001100; /* Fondo verde muy oscuro */
+}
+
+.terminal-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+  /* LA MAGIA DE LOS FILTROS HACKER: */
+  /* 1. grayscale(100%): La vuelve blanco y negro */
+  /* 2. sepia(100%): La vuelve sepia */
+  /* 3. hue-rotate(90deg): Rota el tono sepia hacia el verde matriz */
+  /* 4. contrast(1.5) y saturate(300%): Aumenta el contraste para que se vea "quemada" */
+  filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%) contrast(1.5) brightness(0.9);
+  
+  /* Hace que se vea pixelada si es pequeña */
+  image-rendering: pixelated; 
+  opacity: 0.9;
+}
+
+/* Líneas de escaneo sobre la imagen */
+.image-scan-overlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(51, 255, 0, 0.1),
+    rgba(51, 255, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 2;
+}

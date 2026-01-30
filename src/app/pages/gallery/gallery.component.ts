@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MemoryFrameComponent } from '../../components/memory-frame/memory-frame.component';
 import { Memory } from '../../models/memory.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -10,6 +11,8 @@ import { Memory } from '../../models/memory.model';
   styleUrl: './gallery.component.css',
 })
 export class GalleryComponent {
+  isGlitchingOut = signal(false);
+  private router = inject(Router);
   activeMemory = signal<Memory | null>(null);
   isClosing = signal(false);
   memories: Memory[] = [
@@ -82,5 +85,16 @@ export class GalleryComponent {
       this.activeMemory.set(null); // 2. Cierra de verdad después de 300ms
       this.isClosing.set(false); // 3. Resetea el estado
     }, 300);
+  }
+
+  navigateToBot() {
+    console.log('💥 INICIANDO GLITCH...');
+    // 1. Activamos el modo caos
+    this.isGlitchingOut.set(true); 
+    
+    // 2. Esperamos 800ms (lo que dura la animación) antes de cambiar de ruta
+    setTimeout(() => {
+        this.router.navigate(['/back']);
+    }, 800);
   }
 }

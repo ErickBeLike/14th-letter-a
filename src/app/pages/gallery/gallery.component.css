@@ -218,3 +218,106 @@
     transform: translateY(20px) scale(0.95);
   }
 }
+
+/* =========================================
+   BOTÓN MISTERIOSO (FLOATING ORB)
+   ========================================= */
+
+/* Animación de Levitación (Flota suavemente arriba y abajo) */
+.animate-float-slow {
+  animation: floatButton 3s ease-in-out infinite;
+}
+
+@keyframes floatButton {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      0 4px 6px -1px rgba(225, 29, 72, 0.1),
+      0 2px 4px -1px rgba(225, 29, 72, 0.06);
+  }
+  50% {
+    transform: translateY(-6px); /* Sube un poquito */
+    box-shadow:
+      0 10px 15px -3px rgba(225, 29, 72, 0.2),
+      0 4px 6px -2px rgba(225, 29, 72, 0.1);
+  }
+}
+
+/* Efecto Ripple al hacer click (Opcional, detalle fino) */
+.btn-mystery:active {
+  transform: scale(0.95);
+}
+
+/* NUEVA: Animación Solo Flotar (Sin Sombra) - Para la flecha */
+.animate-float-simple {
+  animation: floatSimple 3s ease-in-out infinite;
+}
+
+@keyframes floatSimple {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px); /* Solo se mueve, no hay box-shadow */
+  }
+}
+
+/* =========================================
+   GLITCH DE SALIDA (CORRUPCIÓN TOTAL)
+   ========================================= */
+
+.gallery-exit-glitch {
+  /* Le ponemos !important para que nada lo bloquee */
+  animation: aggressive-glitch 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both !important;
+  
+  /* Asegura que el glitch afecte a los hijos */
+  transform-style: preserve-3d;
+  
+  /* Bloquea clicks mientras ocurre */
+  pointer-events: none; 
+  
+  /* Forzamos que se renderice en una capa nueva de GPU para que no se trabe */
+  will-change: transform, filter, clip-path;
+}
+
+/* Keyframes (Versión optimizada para que se note más) */
+@keyframes aggressive-glitch {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    /* Sacudida fuerte */
+    transform: translate(-20px, 10px) skewX(-10deg);
+    filter: invert(1) drop-shadow(5px 0 0 red) drop-shadow(-5px 0 0 blue);
+  }
+  20% {
+    /* Zoom in inesperado */
+    transform: scale(1.1);
+    filter: hue-rotate(90deg) contrast(2);
+  }
+  40% {
+    /* Se comprime y se vuelve negativo */
+    transform: scale(0.9) translate(10px, -10px);
+    filter: invert(1);
+    clip-path: inset(20% 0 20% 0); /* Corta la imagen */
+  }
+  60% {
+    /* Flash blanco */
+    background-color: white;
+    transform: scale(1.2) rotate(2deg);
+    filter: brightness(3) blur(2px);
+  }
+  80% {
+    /* Apagado de TV antigua (línea horizontal) */
+    transform: scaleY(0.01) scaleX(1);
+    background-color: black;
+    filter: grayscale(1);
+  }
+  100% {
+    /* Desaparición total */
+    transform: scale(0);
+    background-color: black;
+  }
+}

@@ -1,4 +1,5 @@
-<div class="min-h-screen museum-wall overflow-x-hidden pb-32 selection:bg-amber-200 selection:text-amber-900 relative">
+<div class="min-h-screen museum-wall overflow-x-hidden pb-10 selection:bg-amber-200 selection:text-amber-900 relative"
+     [class.gallery-exit-glitch]="isGlitchingOut()">
 
     <div class="museum-wall-overlay"></div>
 
@@ -11,24 +12,72 @@
         <div class="inline-block mb-4">
             <span class="text-2xl filter drop-shadow-md">🕰️</span>
         </div>
-
         <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-amber-900 mb-3 drop-shadow-md font-bold">
             Nuestra Historia
         </h1>
-
         <p
             class="font-serif text-amber-950 text-xs tracking-[0.2em] uppercase border-t border-b border-amber-800/30 py-2 inline-block px-8 bg-[#dccbb6]/40 backdrop-blur-[2px] rounded-sm shadow-sm">
             Galería de Recuerdos
         </p>
     </header>
 
-    <main class="relative z-10 max-w-md mx-auto px-6 flex flex-col gap-24 mt-12 pt-16 animate-fade-in-up delay-500">
+    <section class="relative z-10 max-w-xs mx-auto px-4 mt-6 mb-4 text-center animate-fade-in-up delay-300">
+        <div class="text-rose-800/40 text-lg mb-3">~ ❦ ~</div>
+        <div class="font-serif text-stone-600 italic text-sm md:text-base leading-relaxed opacity-90">
+            Antes que nada he de desearte un feliz san Valentín y obsequiarte un pequeño detallito hecho con mucho amor
+            y cariño.
+            <br> <br>
+            Hasta cierto punto se sabe que soy fan de las manualidades pero tristemente no te tengo a poquitas cuadras
+            para irtelas a dejar y no se sabe de un encuentro volumen 2, por lo que qué mejor que una pequeña manualidad
+            digital.
+            <br> <br>
+            Siendo sinceros pensé en escibirte una carta física, pero entre mi letra que es un latín antiguo y los
+            correos que a saber cuánto tiempo se demoran en entregar (además que nunca he enviado uno, jeje), preferí
+            hacerte esta cartita en forma de chiqui-app, algún día prometo darte una en persona.
+            <br> <br>
+            De igual forma, entre no querer dejar texto a secas y que me encanta hablar de esta chistosa historia que
+            tenemos, opté por crear una mini galería de recuerdos con un muy breve resumen de estos.
+            <br> <br>
+            Espero que te guste <3. </div>
+                <div class="text-rose-800/40 text-lg mt-3">~ ❦ ~</div>
+    </section>
+
+    <main class="relative z-10 max-w-md mx-auto px-6 flex flex-col gap-24 mt-8 pt-8 animate-fade-in-up delay-500">
         @for (memory of memories; track memory.id) {
         <app-memory-frame [data]="memory" (showDetails)="openModal(memory)"></app-memory-frame>
         }
     </main>
 
-    <div class="h-20"></div>
+
+    <div class="relative z-10 mt-8 mb-20 flex flex-col items-center justify-center animate-fade-in-up delay-700">
+
+        <div class="w-[1px] h-16 bg-gradient-to-b from-rose-200 to-transparent mb-4"></div>
+
+        <button (click)="navigateToBot()" class="btn-mystery w-14 h-14 rounded-full bg-[#fff9fa] border border-rose-200 text-rose-400 
+                       flex items-center justify-center shadow-lg transition-all duration-300 
+                       hover:scale-110 hover:text-rose-600 hover:border-rose-300 hover:bg-white
+                       animate-float-slow group cursor-pointer relative z-20">
+
+            <span class="font-['Dancing_Script'] text-2xl font-bold">?</span>
+
+            <span
+                class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+                         text-[10px] tracking-[0.2em] text-stone-400 bg-white/90 px-3 py-1 rounded-sm shadow-sm whitespace-nowrap pointer-events-none">
+                CONTINUAR
+            </span>
+        </button>
+
+        <div class="mt-4 text-rose-300/60 animate-float-simple">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+
+        <div class="h-10"></div>
+    </div>
+
 
     @if (activeMemory()) {
     <div class="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
@@ -67,7 +116,6 @@
                     &hearts;
                 </div>
             </div>
-
         </div>
     </div>
     }

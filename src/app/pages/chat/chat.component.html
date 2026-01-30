@@ -1,0 +1,61 @@
+<div class="w-full h-full bg-black relative overflow-hidden glitch-entry">
+
+    <div class="scanlines"></div>
+    <div class="screen-flicker"></div>
+
+    <div id="chat-container" class="terminal-container overflow-y-auto custom-scrollbar">
+
+        <div class="mb-6 border-b border-green-900 pb-2 opacity-80">
+            <p class="text-xs text-green-700">KERNEL_V.4.2.0 // SECURE_SHELL (SSH)</p>
+            <p class="text-xs text-green-700">CONNECTION: ESTABLISHED_TO_HOST: ANNITA_HEART</p>
+        </div>
+
+        <div class="flex flex-col font-mono text-sm md:text-base">
+
+            @for (msg of messages(); track msg.id) {
+
+            @if (msg.sender === 'system') {
+            <div class="log-line msg-appear system-text">
+                <span class="opacity-50">[SYSTEM_LOG]:</span> {{ msg.text }}
+            </div>
+            }
+
+            @if (msg.sender === 'bot') {
+            <div class="log-line msg-appear mt-4 mb-2">
+                <div class="flex flex-wrap">
+                    <span class="prompt">user:&#64;ElTitoErick: </span>
+                    <span class="bot-text">{{ msg.text }}</span>
+                </div>
+            </div>
+            }
+            @if (msg.imageUrl) {
+            <div class="terminal-image-container msg-appear my-4 ml-2 relative inline-block">
+                <img [src]="msg.imageUrl" alt="Scanned file" class="terminal-image">
+
+                <div class="image-scan-overlay pointer-events-none"></div>
+
+                <div class="text-[10px] text-green-800 mt-1 font-mono">
+                    IMG_DATA: 300x200 // SIZE: 45KB // ENCODING: GREEN_PHOSPHOR
+                </div>
+            </div>
+            }
+
+
+            }
+
+            @if (isTyping()) {
+            <div class="mt-4">
+                <span class="prompt">user:&#64;ElTitoErick: </span>
+                <span class="cursor-blink"></span>
+            </div>
+            } @else {
+            <div class="mt-2 opacity-50">
+                <span class="prompt">_</span>
+            </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>
