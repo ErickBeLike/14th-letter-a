@@ -1,16 +1,110 @@
-/* Animación de entrada suave */
-/* Hace que el contenido aparezca deslizándose hacia arriba */
-.animate-fade-in {
-  animation: fadeIn 1.5s ease-out forwards;
+/* =========================================
+   FONDO CLÁSICO SAN VALENTÍN (Cream & Wine)
+   ========================================= */
+.museum-wall {
+  /* Fondo: Un crema muy suave (Marfil), menos frío que el blanco */
+  background-color: #fdfbf7; 
+  position: relative;
+  min-height: 100vh;
+  
+  /* Líneas verticales muy sutiles en tono cálido */
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(168, 162, 158, 0.05) 40px
+    );
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.museum-wall-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #fdfbf7;
+  z-index: 20;
+  pointer-events: none;
+  animation: fadeOutTexture 2s ease-out forwards;
 }
+
+@keyframes fadeOutTexture {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Grano sutil */
+.museum-wall::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: simpleFadeIn 2.5s ease-out forwards 0.5s;
+}
+
+/* Vignette: Sombra cálida en las esquinas */
+.museum-wall::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(80, 20, 30, 0.08) 100%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: simpleFadeIn 2.5s ease-out forwards 0.5s;
+}
+
+/* =========================================
+   BORDES DE ENREDADERA (ROJO VINO / CLÁSICO)
+   ========================================= */
+
+.vine-border {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.7; /* Un poco más visibles */
+  /* Sombra sutil para despegarlas del fondo */
+  filter: drop-shadow(1px 1px 1px rgba(159, 18, 57, 0.15)); 
+}
+
+/* --- LATERALES --- */
+.vine-border-y {
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 5;
+  
+  /* CAMBIO: Color #9f1239 (Rose-800/Vino) en lugar de rosa claro */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 240'%3E%3Cpath fill='%239f1239' d='M30,0 C35,20 45,40 40,60 C35,80 25,100 30,120 C35,140 45,160 40,180 C35,200 25,220 30,240 L28,240 C23,220 33,200 38,180 C43,160 33,140 28,120 C23,100 33,80 38,60 C43,40 33,20 28,0 Z'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(20, 80) rotate(-20)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(100, 220) rotate(20)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(20, 380) rotate(-15)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.4) translate(100, 500) rotate(25)'/%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
+.vine-left { left: 0; }
+.vine-right { right: 0; transform: scaleX(-1); }
+
+/* --- SUPERIOR E INFERIOR --- */
+.vine-border-x {
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 6;
+
+  /* CAMBIO: Color #9f1239 (Rose-800/Vino) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 60'%3E%3Cpath fill='%239f1239' d='M0,30 C20,38 40,42 60,35 C80,28 100,22 120,30 C140,38 160,42 180,35 C200,28 220,22 240,30 L240,28 C220,20 200,26 180,33 C160,40 140,36 120,28 C100,20 80,26 60,33 C40,40 20,36 0,28 Z'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.38) translate(90, 15) rotate(-15)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.38) translate(220, 65) rotate(15)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.38) translate(380, 15) rotate(-10)'/%3E%3Cpath fill='%239f1239' d='M28,30 Q10,10 5,30 Q0,50 28,70 Q56,50 51,30 Q46,10 28,30 Z' transform='scale(0.38) translate(510, 65) rotate(20)'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.vine-top { top: 0; }
+.vine-bottom { bottom: 0; transform: scaleY(-1); }
+
+/* ... resto de animaciones fade-in igual ... */
+@keyframes simpleFadeIn { to { opacity: 1; } }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { opacity: 0; animation: fadeInUp 1.2s ease-out forwards; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-500 { animation-delay: 0.5s; }

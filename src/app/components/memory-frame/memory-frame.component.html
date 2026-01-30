@@ -1,12 +1,15 @@
-<div class="relative w-full flex flex-col items-center mb-12">
+<div class="relative w-full flex flex-col items-center mb-16">
 
-    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-[2px] h-16 bg-slate-300 z-0"></div>
-    <div class="absolute -top-[5px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-yellow-600 shadow-sm z-10"></div>
+    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-[1px] h-16 bg-slate-300 z-0"></div>
+    <div
+        class="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-600 shadow-sm z-10">
+    </div>
 
-    <div class="relative w-full bg-white p-3 md:p-4 shadow-2xl rounded-sm border-[8px] border-stone-800 z-10">
+    <div class="relative w-full bg-white p-4 shadow-2xl rounded-[2px] z-10">
 
-        <div class="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden cursor-pointer group shadow-inner"
-            (click)="next()">
+        <div class="absolute inset-2 border border-yellow-500/30 pointer-events-none z-20"></div>
+
+        <div class="relative w-full aspect-[4/5] bg-slate-50 overflow-hidden cursor-pointer group" (click)="next()">
 
             @for (img of data.images; track $index) {
             <img [src]="img" alt="Recuerdo {{ data.title }}"
@@ -15,39 +18,39 @@
             }
 
             <div
-                class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none">
+                class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20 pointer-events-none">
             </div>
 
             @if (data.images.length > 1) {
-            <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+            <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-30">
                 @for (img of data.images; track $index) {
                 <button type="button" (click)="goTo($index); $event.stopPropagation()"
-                    class="w-2 h-2 rounded-full transition-all duration-300 shadow-sm border border-black/10"
-                    [ngClass]="currentIndex() === $index ? 'bg-white scale-125' : 'bg-white/40'">
+                    class="w-1.5 h-1.5 rounded-full transition-all duration-300 shadow-sm border border-white/20"
+                    [ngClass]="currentIndex() === $index ? 'bg-white scale-125' : 'bg-white/50'">
                 </button>
                 }
             </div>
             }
-
         </div>
-
     </div>
 
-    <div
-        class="mt-6 bg-gradient-to-b from-yellow-100 to-yellow-200 border border-yellow-300 px-6 py-2 shadow-md rounded-sm text-center min-w-[180px] max-w-[90%] transform hover:scale-105 transition-transform duration-300">
+    <div class="relative mt-6 min-w-[200px] transform hover:scale-105 transition-transform duration-300 group/plaque">
 
-        <h3 class="font-serif text-slate-800 font-bold text-xs tracking-[0.2em] uppercase mb-1">
-            {{ data.title }}
-        </h3>
+        <div class="bg-white border border-rose-100 px-8 py-3 shadow-md rounded-[1px] text-center relative">
 
-        <p class="font-['Dancing_Script'] text-rose-600 text-lg leading-none">
-            {{ data.date }}
-        </p>
+            <div class="absolute top-1 left-1 w-2 h-2 border-l border-t border-yellow-500"></div>
+            <div class="absolute top-1 right-1 w-2 h-2 border-r border-t border-yellow-500"></div>
+            <div class="absolute bottom-1 left-1 w-2 h-2 border-l border-b border-yellow-500"></div>
+            <div class="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-yellow-500"></div>
 
-        <div class="absolute top-1.5 left-1.5 w-1 h-1 rounded-full bg-yellow-600/50"></div>
-        <div class="absolute top-1.5 right-1.5 w-1 h-1 rounded-full bg-yellow-600/50"></div>
-        <div class="absolute bottom-1.5 left-1.5 w-1 h-1 rounded-full bg-yellow-600/50"></div>
-        <div class="absolute bottom-1.5 right-1.5 w-1 h-1 rounded-full bg-yellow-600/50"></div>
+            <h3 class="font-serif text-slate-500 font-bold text-[10px] tracking-[0.3em] uppercase mb-1">
+                {{ data.title }}
+            </h3>
+
+            <p class="font-['Dancing_Script'] text-rose-900 text-xl leading-none font-bold">
+                {{ data.date }}
+            </p>
+        </div>
     </div>
 
 </div>

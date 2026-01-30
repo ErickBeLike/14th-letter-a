@@ -1,21 +1,28 @@
-<div class="min-h-screen bg-[#fdfbf7] overflow-x-hidden pb-32">
+<div class="min-h-screen museum-wall overflow-x-hidden pb-32 selection:bg-amber-200 selection:text-amber-900 relative">
 
-    <header class="pt-16 pb-12 text-center px-4 animate-fade-in">
+    <div class="museum-wall-overlay"></div>
+
+    <div class="vine-border vine-border-y vine-left"></div>
+    <div class="vine-border vine-border-y vine-right"></div>
+    <div class="vine-border vine-border-x vine-top"></div>
+    <div class="vine-border vine-border-x vine-bottom"></div>
+
+    <header class="relative z-10 pt-24 pb-4 text-center px-4 animate-fade-in-up delay-100">
         <div class="inline-block mb-4">
-            <span class="text-2xl">✨</span>
+            <span class="text-2xl filter drop-shadow-md">🕰️</span>
         </div>
 
-        <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-rose-600 mb-3 drop-shadow-sm">
+        <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-amber-900 mb-3 drop-shadow-md font-bold">
             Nuestra Historia
         </h1>
 
         <p
-            class="font-serif text-slate-600 text-xs tracking-[0.2em] uppercase border-t border-b border-rose-200 py-2 inline-block px-8">
+            class="font-serif text-amber-950 text-xs tracking-[0.2em] uppercase border-t border-b border-amber-800/30 py-2 inline-block px-8 bg-[#dccbb6]/40 backdrop-blur-[2px] rounded-sm shadow-sm">
             Galería de Recuerdos
         </p>
     </header>
 
-    <main class="max-w-md mx-auto px-6 flex flex-col gap-20">
+    <main class="relative z-10 max-w-md mx-auto px-6 flex flex-col gap-24 mt-12 pt-16 animate-fade-in-up delay-500">
 
         @for (memory of memories; track memory.id) {
         <app-memory-frame [data]="memory"></app-memory-frame>
