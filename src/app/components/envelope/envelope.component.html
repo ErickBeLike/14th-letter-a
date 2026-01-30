@@ -1,0 +1,73 @@
+<div class="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <div class="stars4"></div>
+
+    <div class="animate-float" [style.animation-play-state]="isOpening() ? 'paused' : 'running'">
+
+        <div class="relative cursor-pointer transition-transform duration-1000 ease-in-out"
+            [class.scale-105]="isOpening()" [class.translate-y-16]="isOpening()" (click)="openEnvelope()">
+
+            <div
+                class="relative w-80 max-w-[85vw] h-52 bg-gradient-to-br from-rose-50 to-rose-100 rounded-md shadow-2xl flex justify-center items-end z-10">
+
+                <div class="absolute inset-0 bg-[#fdf2f8] -z-10"></div>
+
+                <div class="absolute bottom-0 w-[90%] h-[85%] bg-white z-10 shadow-md transition-all duration-1000 delay-500 rounded-t-sm"
+                    [class.-translate-y-24]="isOpening()">
+                    <div class="w-full h-full p-5 flex flex-col gap-3 opacity-60">
+                        <div class="h-1.5 bg-slate-200 w-full rounded-full"></div>
+                        <div class="h-1.5 bg-slate-200 w-full rounded-full"></div>
+                        <div class="h-1.5 bg-slate-200 w-3/4 rounded-full"></div>
+                        <div class="h-1.5 bg-slate-200 w-5/6 rounded-full mt-2"></div>
+                    </div>
+                </div>
+
+                <div
+                    class="absolute left-0 top-0 w-0 h-0 border-l-[160px] border-t-[110px] border-b-[100px] 
+                            border-l-rose-100 border-t-transparent border-b-transparent pointer-events-none z-20 drop-shadow-sm">
+                </div>
+                <div
+                    class="absolute right-0 top-0 w-0 h-0 border-r-[160px] border-t-[110px] border-b-[100px] 
+                            border-r-rose-100 border-t-transparent border-b-transparent pointer-events-none z-20 drop-shadow-sm">
+                </div>
+
+                <div
+                    class="absolute bottom-0 w-0 h-0 border-b-[120px] border-l-[160px] border-r-[160px]
+                            border-b-rose-200 border-l-transparent border-r-transparent pointer-events-none z-30 drop-shadow-md">
+                </div>
+
+                <div class="absolute bottom-3 left-4 z-40 transform -rotate-2">
+                    <p class="font-['Dancing_Script'] text-xl text-slate-700 font-bold tracking-wide opacity-90">
+                        De: Erick
+                    </p>
+                </div>
+                <div class="absolute bottom-3 right-4 z-40 transform rotate-2">
+                    <p class="font-['Dancing_Script'] text-2xl font-bold text-rose-600 tracking-wide opacity-90">
+                        Para: Annita &lt;3
+                    </p>
+                </div>
+
+                <div class="absolute top-0 w-0 h-0 border-l-[160px] border-r-[160px] border-t-[120px] 
+                      border-l-transparent border-r-transparent border-t-rose-300
+                      origin-top transition-all duration-1000 ease-in-out drop-shadow-lg" [class.z-50]="!isOpening()"
+                    [class.z-0]="isOpening()" [class.rotate-x-180]="isOpening()">
+                </div>
+
+                <div class="absolute top-[40%] z-50 w-14 h-14 bg-gradient-to-br from-purple-700 to-pink-600 rounded-full shadow-lg flex items-center justify-center border-[3px] border-purple-900 transition-all duration-500"
+                    [class.opacity-0]="isOpening()" [class.scale-150]="isOpening()">
+                    <span class="text-pink-100 font-serif text-2xl font-bold drop-shadow-md">A</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="fixed inset-0 bg-[#fdfbf7] z-[100] pointer-events-none transition-opacity duration-1000 ease-in-out"
+        [class.opacity-0]="!isTransitioning()" [class.opacity-100]="isTransitioning()">
+    </div>
+
+</div>

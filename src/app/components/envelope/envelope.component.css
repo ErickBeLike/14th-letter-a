@@ -1,0 +1,113 @@
+/* Animación para rotar la solapa */
+.rotate-x-180 {
+  transform: rotateX(180deg);
+}
+
+/* =========================================
+   CONFIGURACIÓN DE ESTRELLAS (CENTRADAS)
+   ========================================= */
+
+.stars, .stars2, .stars3, .stars4 {
+  position: absolute;
+  left: 50%; /* <--- EL TRUCO: El origen es el centro de la pantalla */
+  background: transparent;
+  animation: animStar linear infinite;
+  border-radius: 50%; /* Para que sean redonditas */
+}
+
+/* Capa 1: Polvo Cósmico (El fondo denso) */
+.stars {
+  width: 1px;
+  height: 1px;
+  animation-duration: 50s;
+  box-shadow: 
+    /* --- NÚCLEO CENTRAL (Mobile Safe Zone: -200px a +200px) --- */
+    -10px 50px #FFF, 20px 150px #FFF, -50px 40px #FFF, 80px 250px #FFF, -120px 350px #FFF,
+    150px 50px #FFF, -180px 450px #FFF, 10px 100px #FFF, -30px 300px #FFF, 60px 500px #FFF,
+    -90px 20px #FFF, 110px 600px #FFF, -140px 750px #FFF, 160px 900px #FFF, -10px 1100px #FFF,
+    40px 1300px #FFF, -70px 1500px #FFF, 100px 1700px #FFF, -130px 1900px #FFF, 190px 800px #FFF,
+    -160px 1200px #FFF, 140px 1400px #FFF, -20px 1600px #FFF, 50px 1800px #FFF, -80px 1950px #FFF,
+    -5px 200px #FFF, 5px 400px #FFF, -15px 600px #FFF, 15px 800px #FFF, -25px 1000px #FFF,
+    25px 1250px #FFF, -35px 1450px #FFF, 35px 1650px #FFF, -45px 1850px #FFF, 45px 150px #FFF,
+    
+    /* --- EXTENSIÓN LATERAL (Para PC: -900px a +900px) --- */
+    -400px 200px #FFF, 400px 600px #FFF, -600px 300px #FFF, 600px 900px #FFF, 
+    -800px 1200px #FFF, 800px 500px #FFF, -300px 800px #FFF, 300px 1500px #FFF,
+    -500px 100px #FFF, 500px 1800px #FFF, -700px 1400px #FFF, 700px 700px #FFF;
+}
+
+/* Capa 2: Estrellas Medianas (Profundidad) */
+.stars2 {
+  width: 2px;
+  height: 2px;
+  animation-duration: 100s;
+  box-shadow: 
+    /* --- NÚCLEO CENTRAL --- */
+    -40px 100px #FFF, 60px 300px #FFF, -80px 500px #FFF, 100px 700px #FFF, -120px 900px #FFF,
+    140px 1100px #FFF, -160px 1300px #FFF, 180px 1500px #FFF, -200px 1700px #FFF, 10px 1900px #FFF,
+    -100px 200px #FFF, 120px 400px #FFF, -140px 600px #FFF, 160px 800px #FFF,
+    
+    /* --- EXTENSIÓN LATERAL --- */
+    -350px 400px #FFF, 450px 800px #FFF, -550px 200px #FFF, 650px 1500px #FFF,
+    -750px 1200px #FFF, 750px 600px #FFF;
+}
+
+/* Capa 3: Fondo lejano (Lentas y tenues) */
+.stars3 {
+  width: 1px;
+  height: 1px;
+  animation-duration: 150s;
+  opacity: 0.8;
+  box-shadow: 
+    /* --- NÚCLEO CENTRAL --- */
+    20px 80px #FFF, -20px 280px #FFF, 40px 480px #FFF, -40px 680px #FFF, 60px 880px #FFF,
+    -60px 1080px #FFF, 80px 1280px #FFF, -80px 1480px #FFF, 100px 1680px #FFF, -100px 1880px #FFF,
+    
+    /* --- EXTENSIÓN LATERAL --- */
+    -400px 100px #FFF, 400px 500px #FFF, -800px 900px #FFF, 800px 1300px #FFF;
+}
+
+/* Capa 4: Brillantes (Twinkle) */
+.stars4 {
+  width: 3px;
+  height: 3px;
+  animation-duration: 60s;
+  animation-name: animStar, twinkle; 
+  box-shadow: 
+    /* --- NÚCLEO CENTRAL --- */
+    -50px 200px #FFF, 80px 500px #FFF, -120px 800px #FFF, 150px 1100px #FFF, 
+    -30px 1400px #FFF, 180px 1700px #FFF, 
+    
+    /* --- EXTENSIÓN LATERAL --- */
+    -300px 400px #FFF, 300px 1200px #FFF, -600px 900px #FFF, 600px 300px #FFF;
+}
+
+/* Movimiento Vertical (De abajo hacia arriba) */
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+/* Efecto de Titilar */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* =========================================
+   ANIMACIONES DE LA CARTA
+   ========================================= */
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.stop-float {
+  animation-play-state: paused;
+}

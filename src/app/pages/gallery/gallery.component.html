@@ -1,0 +1,28 @@
+<div class="min-h-screen bg-[#fdfbf7] overflow-x-hidden pb-32">
+
+    <header class="pt-16 pb-12 text-center px-4 animate-fade-in">
+        <div class="inline-block mb-4">
+            <span class="text-2xl">✨</span>
+        </div>
+
+        <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-rose-600 mb-3 drop-shadow-sm">
+            Nuestra Historia
+        </h1>
+
+        <p
+            class="font-serif text-slate-600 text-xs tracking-[0.2em] uppercase border-t border-b border-rose-200 py-2 inline-block px-8">
+            Galería de Recuerdos
+        </p>
+    </header>
+
+    <main class="max-w-md mx-auto px-6 flex flex-col gap-20">
+
+        @for (memory of memories; track memory.id) {
+        <app-memory-frame [data]="memory"></app-memory-frame>
+        }
+
+    </main>
+
+    <div class="h-20"></div>
+
+</div>

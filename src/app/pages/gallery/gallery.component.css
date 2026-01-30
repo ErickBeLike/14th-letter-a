@@ -1,0 +1,16 @@
+/* Animación de entrada suave */
+/* Hace que el contenido aparezca deslizándose hacia arriba */
+.animate-fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
