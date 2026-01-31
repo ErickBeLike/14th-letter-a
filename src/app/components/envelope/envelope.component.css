@@ -7,7 +7,10 @@
    CONFIGURACIÓN DE ESTRELLAS (CENTRADAS)
    ========================================= */
 
-.stars, .stars2, .stars3, .stars4 {
+.stars,
+.stars2,
+.stars3,
+.stars4 {
   position: absolute;
   left: 50%; /* <--- EL TRUCO: El origen es el centro de la pantalla */
   background: transparent;
@@ -22,18 +25,53 @@
   animation-duration: 50s;
   box-shadow: 
     /* --- NÚCLEO CENTRAL (Mobile Safe Zone: -200px a +200px) --- */
-    -10px 50px #FFF, 20px 150px #FFF, -50px 40px #FFF, 80px 250px #FFF, -120px 350px #FFF,
-    150px 50px #FFF, -180px 450px #FFF, 10px 100px #FFF, -30px 300px #FFF, 60px 500px #FFF,
-    -90px 20px #FFF, 110px 600px #FFF, -140px 750px #FFF, 160px 900px #FFF, -10px 1100px #FFF,
-    40px 1300px #FFF, -70px 1500px #FFF, 100px 1700px #FFF, -130px 1900px #FFF, 190px 800px #FFF,
-    -160px 1200px #FFF, 140px 1400px #FFF, -20px 1600px #FFF, 50px 1800px #FFF, -80px 1950px #FFF,
-    -5px 200px #FFF, 5px 400px #FFF, -15px 600px #FFF, 15px 800px #FFF, -25px 1000px #FFF,
-    25px 1250px #FFF, -35px 1450px #FFF, 35px 1650px #FFF, -45px 1850px #FFF, 45px 150px #FFF,
-    
-    /* --- EXTENSIÓN LATERAL (Para PC: -900px a +900px) --- */
-    -400px 200px #FFF, 400px 600px #FFF, -600px 300px #FFF, 600px 900px #FFF, 
-    -800px 1200px #FFF, 800px 500px #FFF, -300px 800px #FFF, 300px 1500px #FFF,
-    -500px 100px #FFF, 500px 1800px #FFF, -700px 1400px #FFF, 700px 700px #FFF;
+    -10px 50px #fff,
+    20px 150px #fff,
+    -50px 40px #fff,
+    80px 250px #fff,
+    -120px 350px #fff,
+    150px 50px #fff,
+    -180px 450px #fff,
+    10px 100px #fff,
+    -30px 300px #fff,
+    60px 500px #fff,
+    -90px 20px #fff,
+    110px 600px #fff,
+    -140px 750px #fff,
+    160px 900px #fff,
+    -10px 1100px #fff,
+    40px 1300px #fff,
+    -70px 1500px #fff,
+    100px 1700px #fff,
+    -130px 1900px #fff,
+    190px 800px #fff,
+    -160px 1200px #fff,
+    140px 1400px #fff,
+    -20px 1600px #fff,
+    50px 1800px #fff,
+    -80px 1950px #fff,
+    -5px 200px #fff,
+    5px 400px #fff,
+    -15px 600px #fff,
+    15px 800px #fff,
+    -25px 1000px #fff,
+    25px 1250px #fff,
+    -35px 1450px #fff,
+    35px 1650px #fff,
+    -45px 1850px #fff,
+    45px 150px #fff,
+    /* --- EXTENSIÓN LATERAL (Para PC: -900px a +900px) --- */ -400px 200px #fff,
+    400px 600px #fff,
+    -600px 300px #fff,
+    600px 900px #fff,
+    -800px 1200px #fff,
+    800px 500px #fff,
+    -300px 800px #fff,
+    300px 1500px #fff,
+    -500px 100px #fff,
+    500px 1800px #fff,
+    -700px 1400px #fff,
+    700px 700px #fff;
 }
 
 /* Capa 2: Estrellas Medianas (Profundidad) */
@@ -43,13 +81,26 @@
   animation-duration: 100s;
   box-shadow: 
     /* --- NÚCLEO CENTRAL --- */
-    -40px 100px #FFF, 60px 300px #FFF, -80px 500px #FFF, 100px 700px #FFF, -120px 900px #FFF,
-    140px 1100px #FFF, -160px 1300px #FFF, 180px 1500px #FFF, -200px 1700px #FFF, 10px 1900px #FFF,
-    -100px 200px #FFF, 120px 400px #FFF, -140px 600px #FFF, 160px 800px #FFF,
-    
-    /* --- EXTENSIÓN LATERAL --- */
-    -350px 400px #FFF, 450px 800px #FFF, -550px 200px #FFF, 650px 1500px #FFF,
-    -750px 1200px #FFF, 750px 600px #FFF;
+    -40px 100px #fff,
+    60px 300px #fff,
+    -80px 500px #fff,
+    100px 700px #fff,
+    -120px 900px #fff,
+    140px 1100px #fff,
+    -160px 1300px #fff,
+    180px 1500px #fff,
+    -200px 1700px #fff,
+    10px 1900px #fff,
+    -100px 200px #fff,
+    120px 400px #fff,
+    -140px 600px #fff,
+    160px 800px #fff,
+    /* --- EXTENSIÓN LATERAL --- */ -350px 400px #fff,
+    450px 800px #fff,
+    -550px 200px #fff,
+    650px 1500px #fff,
+    -750px 1200px #fff,
+    750px 600px #fff;
 }
 
 /* Capa 3: Fondo lejano (Lentas y tenues) */
@@ -60,11 +111,20 @@
   opacity: 0.8;
   box-shadow: 
     /* --- NÚCLEO CENTRAL --- */
-    20px 80px #FFF, -20px 280px #FFF, 40px 480px #FFF, -40px 680px #FFF, 60px 880px #FFF,
-    -60px 1080px #FFF, 80px 1280px #FFF, -80px 1480px #FFF, 100px 1680px #FFF, -100px 1880px #FFF,
-    
-    /* --- EXTENSIÓN LATERAL --- */
-    -400px 100px #FFF, 400px 500px #FFF, -800px 900px #FFF, 800px 1300px #FFF;
+    20px 80px #fff,
+    -20px 280px #fff,
+    40px 480px #fff,
+    -40px 680px #fff,
+    60px 880px #fff,
+    -60px 1080px #fff,
+    80px 1280px #fff,
+    -80px 1480px #fff,
+    100px 1680px #fff,
+    -100px 1880px #fff,
+    /* --- EXTENSIÓN LATERAL --- */ -400px 100px #fff,
+    400px 500px #fff,
+    -800px 900px #fff,
+    800px 1300px #fff;
 }
 
 /* Capa 4: Brillantes (Twinkle) */
@@ -72,26 +132,42 @@
   width: 3px;
   height: 3px;
   animation-duration: 60s;
-  animation-name: animStar, twinkle; 
+  animation-name: animStar, twinkle;
   box-shadow: 
     /* --- NÚCLEO CENTRAL --- */
-    -50px 200px #FFF, 80px 500px #FFF, -120px 800px #FFF, 150px 1100px #FFF, 
-    -30px 1400px #FFF, 180px 1700px #FFF, 
-    
-    /* --- EXTENSIÓN LATERAL --- */
-    -300px 400px #FFF, 300px 1200px #FFF, -600px 900px #FFF, 600px 300px #FFF;
+    -50px 200px #fff,
+    80px 500px #fff,
+    -120px 800px #fff,
+    150px 1100px #fff,
+    -30px 1400px #fff,
+    180px 1700px #fff,
+    /* --- EXTENSIÓN LATERAL --- */ -300px 400px #fff,
+    300px 1200px #fff,
+    -600px 900px #fff,
+    600px 300px #fff;
 }
 
 /* Movimiento Vertical (De abajo hacia arriba) */
 @keyframes animStar {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-2000px); }
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }
 
 /* Efecto de Titilar */
 @keyframes twinkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.8); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
 }
 
 /* =========================================
@@ -99,9 +175,15 @@
    ========================================= */
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-float {
@@ -110,4 +192,59 @@
 
 .stop-float {
   animation-play-state: paused;
+}
+
+/* =========================================
+   LOGICA DE TIEMPOS (TIMING MAGIC v2)
+   ========================================= */
+
+/* --- LA CARTA (El papel blanco) --- */
+.letter-content {
+  /* Tarda 0.6s en moverse */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* AL ABRIR: Espera 0.6s a que la solapa termine de subir */
+.letter-content.open {
+  transition-delay: 0.6s;
+}
+
+/* AL CERRAR: Baja INMEDIATAMENTE (sin espera) */
+.letter-content.closed {
+  transition-delay: 0s;
+}
+
+/* --- LA SOLAPA (El triángulo de arriba) --- */
+.flap-top {
+  transition:
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s linear 0.3s;
+}
+
+/* AL ABRIR: Sube INMEDIATAMENTE */
+.flap-top.open {
+  transition-delay: 0s;
+}
+
+/* AL CERRAR: ¡AQUÍ ESTÁ EL TRUCO! */
+/* Espera 0.7s (0.6s de la carta + 0.1s de margen) para que no choquen */
+.flap-top.closed {
+  transition-delay: 0.7s;
+}
+
+/* --- EL BROCHECITO (Sello) --- */
+.envelope-seal {
+  /* La animación dura 0.4s en hacerse transparente/visible */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* AL ABRIR: ¡Puf! Desaparece rápido (sin espera) */
+.envelope-seal.open {
+  transition-delay: 0s;
+}
+
+/* AL CERRAR: Aparece AL FINAL de todo */
+/* Espera 1.2s (0.6s carta + 0.6s solapa) para aparecer encima */
+.envelope-seal.closed {
+  transition-delay: 1s; 
 }

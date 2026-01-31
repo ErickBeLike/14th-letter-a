@@ -15,6 +15,7 @@ export class GalleryComponent {
   private router = inject(Router);
   activeMemory = signal<Memory | null>(null);
   isClosing = signal(false);
+  isReturning = signal(false);
   memories: Memory[] = [
     {
       id: 1,
@@ -89,11 +90,21 @@ export class GalleryComponent {
 
   navigateToBot() {
     // 1. Activamos el modo caos
-    this.isGlitchingOut.set(true); 
-    
+    this.isGlitchingOut.set(true);
+
     // 2. Esperamos 800ms (lo que dura la animación) antes de cambiar de ruta
     setTimeout(() => {
-        this.router.navigate(['/back']);
+      this.router.navigate(['/back']);
     }, 800);
+  }
+
+  returnToEnvelope() {
+    // 1. Activar animación de salida suave (Fade to Cream)
+    this.isReturning.set(true);
+
+    // 2. Esperar 1 segundo y navegar avisando que "estamos volviendo"
+    setTimeout(() => {
+      this.router.navigate(['/'], { queryParams: { returning: 'true' } });
+    }, 1000);
   }
 }

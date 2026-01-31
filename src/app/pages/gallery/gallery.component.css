@@ -255,7 +255,8 @@
 }
 
 @keyframes floatSimple {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -270,13 +271,13 @@
 .gallery-exit-glitch {
   /* Le ponemos !important para que nada lo bloquee */
   animation: aggressive-glitch 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both !important;
-  
+
   /* Asegura que el glitch afecte a los hijos */
   transform-style: preserve-3d;
-  
+
   /* Bloquea clicks mientras ocurre */
-  pointer-events: none; 
-  
+  pointer-events: none;
+
   /* Forzamos que se renderice en una capa nueva de GPU para que no se trabe */
   will-change: transform, filter, clip-path;
 }
@@ -319,5 +320,42 @@
     /* Desaparición total */
     transform: scale(0);
     background-color: black;
+  }
+}
+
+.gallery-fade-out {
+  animation: fadeOutToCream 1s forwards;
+  pointer-events: none; /* Evita clicks mientras se va */
+}
+
+@keyframes fadeOutToCream {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+/* =========================================
+   ANIMACIÓN BOTÓN INICIO (ENTRADA SUAVE)
+   ========================================= */
+
+.animate-ethereal-entry {
+  opacity: 0; /* Empieza invisible */
+  animation: etherealFadeIn 2s ease-out forwards;
+  animation-delay: 1.5s; /* Espera 1.5s (que termine de entrar el título) */
+}
+
+@keyframes etherealFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px); /* Baja un poquitito, muy sutil */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

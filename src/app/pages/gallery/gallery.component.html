@@ -1,7 +1,24 @@
 <div class="min-h-screen museum-wall overflow-x-hidden pb-10 selection:bg-amber-200 selection:text-amber-900 relative"
-     [class.gallery-exit-glitch]="isGlitchingOut()">
+    [class.gallery-exit-glitch]="isGlitchingOut()" [class.gallery-fade-out]="isReturning()">
 
     <div class="museum-wall-overlay"></div>
+
+    <button (click)="returnToEnvelope()" class="fixed top-6 left-6 z-50 group cursor-pointer
+                   bg-[#fdfbf7]/90 backdrop-blur-sm 
+                   border border-rose-900/20 rounded-[2px] shadow-sm
+                   px-5 py-2 transition-all duration-300
+                   hover:bg-white hover:border-rose-900/40 hover:shadow-md hover:-translate-y-0.5
+                   animate-ethereal-entry">
+        <div class="flex items-center gap-3">
+            <span class="text-rose-800/60 group-hover:text-rose-800 transition-colors text-lg leading-none pb-0.5">
+                ←
+            </span>
+            <span
+                class="font-serif text-xs font-bold tracking-[0.25em] text-rose-900/70 group-hover:text-rose-900 uppercase">
+                Inicio
+            </span>
+        </div>
+    </button>
 
     <div class="vine-border vine-border-y vine-left"></div>
     <div class="vine-border vine-border-y vine-right"></div>
@@ -12,11 +29,12 @@
         <div class="inline-block mb-4">
             <span class="text-2xl filter drop-shadow-md">🕰️</span>
         </div>
-        <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-amber-900 mb-3 drop-shadow-md font-bold">
+        <h1 class="font-['Dancing_Script'] text-4xl md:text-5xl text-[#9f1239] mb-3 drop-shadow-md font-bold">
             Nuestra Historia
         </h1>
+
         <p
-            class="font-serif text-amber-950 text-xs tracking-[0.2em] uppercase border-t border-b border-amber-800/30 py-2 inline-block px-8 bg-[#dccbb6]/40 backdrop-blur-[2px] rounded-sm shadow-sm">
+            class="font-serif text-rose-950/80 text-xs tracking-[0.2em] uppercase border-t border-b border-rose-900/20 py-2 inline-block px-8 bg-[#dccbb6]/40 backdrop-blur-[2px] rounded-sm shadow-sm">
             Galería de Recuerdos
         </p>
     </header>
