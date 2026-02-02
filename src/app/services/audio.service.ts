@@ -86,7 +86,7 @@ export class AudioService {
     // 2. Esperamos el tiempo del delay antes de subir el volumen de la nueva
     setTimeout(() => {
       // Fade In suave
-      const maxVolume = 0.5;
+      const maxVolume = 1.0;
       let vol = 0;
       const fadeUp = setInterval(() => {
         if (this.currentTrack !== 'romance') {
