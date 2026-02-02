@@ -68,7 +68,7 @@ export class AudioService {
           clearInterval(this.transitionInterval);
           this.currentTrack = null;
         }
-      }, 55); // Cambios EXTREMADAMENTE rápidos (cada 55ms)
+      }, 45); // Cambios EXTREMADAMENTE rápidos (cada 55ms)
     }
   }
 
@@ -101,7 +101,7 @@ export class AudioService {
         } else {
           fadeIn.volume = vol;
         }
-      }, 200); // Cada 50ms sube un poquito
+      }, 50); // Cada 50ms sube un poquito
     }, delayMs);
   }
 
@@ -115,6 +115,6 @@ export class AudioService {
         audio.currentTime = 0;
         clearInterval(timer);
       }
-    }, 100);
+    }, 50); // Cada 50ms baja un poquito
   }
 }
