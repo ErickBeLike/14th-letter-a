@@ -1,6 +1,7 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AudioService } from '../../services/audio.service';
 
 @Component({
   selector: 'app-envelope',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class EnvelopeComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private audioService = inject(AudioService);
 
   isOpening = signal(false);
   isTransitioning = signal(false);
@@ -57,6 +59,7 @@ export class EnvelopeComponent implements OnInit {
     if (this.isOpening()) return;
 
     // 1. Empieza la animación del sobre
+    this.audioService.play('romance');
     this.isOpening.set(true);
 
     // 2. A los 800ms (cuando la carta ya va saliendo), empezamos a fundir la pantalla a crema

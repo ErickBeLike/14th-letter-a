@@ -1,6 +1,7 @@
 import { Component, OnInit, signal, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AudioService } from '../../services/audio.service';
 
 interface ChatMessage {
   id: number;
@@ -23,6 +24,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   isTyping = signal(false);
   isExiting = signal(false);
   private scriptTimeouts: any[] = [];
+  private audioService = inject(AudioService);
+
+  constructor() {
+    // Disparar el glitch ANTES de que Angular renderice el componente
+    this.audioService.stopWithGlitch();
+  }
 
   // EL GUION: Aquí escribes lo que va a pasar
   fullScript: ChatMessage[] = [
@@ -258,6 +265,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   reload() {
     // REINICIO: Activamos efecto y luego nos vamos
+    this.audioService.stopAll();
     this.triggerExit(() => this.router.navigate(['/']));
   }
 
