@@ -57,11 +57,20 @@
                     [class.z-0]="isOpening()" [class.rotate-x-180]="isOpening()">
                 </div>
 
-                <div class="absolute top-[40%] z-50 w-14 h-14 bg-gradient-to-br from-purple-700 to-pink-600 rounded-full shadow-lg flex items-center justify-center border-[3px] border-purple-900 envelope-seal"
+                <div class="absolute top-[40%] z-50 w-16 h-16 flex items-center justify-center envelope-seal heart-seal"
                     [class.open]="isOpening()" [class.closed]="!isOpening()" [class.opacity-0]="isOpening()"
                     [class.scale-150]="isOpening()">
 
-                    <span class="text-pink-100 font-serif text-2xl font-bold drop-shadow-md">E</span>
+                    <svg class="w-full h-full drop-shadow-lg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50,85 C20,65 5,50 5,35 C5,20 15,10 25,10 C35,10 45,18 50,28 C55,18 65,10 75,10 C85,10 95,20 95,35 C95,50 80,65 50,85 Z" 
+                              fill="url(#heartGradient)" stroke="#8B3A3A" stroke-width="2"/>
+                        <defs>
+                            <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D25252;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#A03030;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
 
             </div>
